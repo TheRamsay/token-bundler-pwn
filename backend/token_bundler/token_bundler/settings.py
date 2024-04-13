@@ -24,9 +24,6 @@ FRONTEND_URL = os.getenv("FRONTEND_URL")
 if not API_KEY:
     raise ValueError("API_KEY not found in .env file")
 
-if not FRONTEND_URL:
-    raise ValueError("FRONTEND_URL not found in .env file")
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -142,5 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    FRONTEND_URL
 ]
+
+if FRONTEND_URL:
+    CORS_ALLOWED_ORIGINS.append(FRONTEND_URL)

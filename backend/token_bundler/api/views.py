@@ -3,7 +3,6 @@ from rest_framework import permissions, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.views import Response
 from token_bundler.settings import API_KEY
-import aiohttp
 import json
 
 from .serializers import WalletAssetSerializer, BundleSerializer, BundleAssetSerializer
@@ -34,7 +33,7 @@ def get_wallet_assets(request, address: str):
 
     try:
         data = request_wallet_assets(address)
-    except aiohttp.ClientError as e:
+    except Exception as e:
         return Response({"error": str(e)}, status=400)
 
     wallet, _ = UserWallet.objects.get_or_create(address=address)
