@@ -18,7 +18,7 @@ certifi==2023.7.22
 cffi==1.16.0
 chardet==4.0.0
 charset-normalizer==3.3.0
-cliapp==1.20180812.1
+cliapp==1.0.9
 cmake-converter==2.2.0
 colorama==0.4.6
 comm==0.1.4
