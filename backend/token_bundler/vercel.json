@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "token_bundler/token_bundler/wsgi.py",
+            "src": "token_bundler/wsgi.py",
             "use": "@vercel/python",
             "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
         },
@@ -15,7 +15,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "token_bundler/token_bundler/wsgi.py"
+            "dest": "token_bundler/wsgi.py"
         }
     ]
 }
