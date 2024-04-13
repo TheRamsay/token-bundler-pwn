@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 
 function setMaxToBeBundled(asset: SelectedBundleAsset) {
-    currentBundleStore.changeToBeBundled(asset.address, asset.displayedBalance)
+    currentBundleStore.changeToBeBundled(asset.address, asset.displayedBalance.toString())
 }
 </script>
 

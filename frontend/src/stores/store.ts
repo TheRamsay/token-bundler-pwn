@@ -11,7 +11,7 @@ export const currentBundleStore = reactive({
             asset.selected = !asset.selected;
         }
     },
-    changeToBeBundled(address: string, value: number) {
+    changeToBeBundled(address: string, value: string) {
         const asset = this.bundle.find(asset => asset.address == address);
 
         if (asset) {

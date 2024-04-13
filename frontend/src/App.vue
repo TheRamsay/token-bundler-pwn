@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import YourBundles from '@/components/YourBundles.vue'
 import CreateBundle from '@/components/CreateBundle.vue'
-import Navbar from '@/components/Navbar.vue'
+import Navbar from '@/components/NavBar.vue'
 import { ref, computed } from 'vue'
 import { addressStore } from '@/stores/store'
 import Toaster from '@/components/ui/toast/Toaster.vue'
@@ -18,6 +18,7 @@ window.addEventListener('hashchange', () => {
 })
 
 const currentView = computed(() => {
+    // @ts-ignore
     return routes[currentPath.value.slice(1) || '/']
 })
 </script>

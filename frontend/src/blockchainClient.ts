@@ -4,8 +4,7 @@ import { injected } from 'use-wagmi/connectors'
 import { createPublicClient, createWalletClient, custom, erc20Abi, getContract, type Address } from 'viem'
 import { contractAbi } from './abi'
 import type { SelectedBundleAsset } from './types'
-import { addressStore, currentBundleStore, userBundlesStore } from './stores/store'
-import { createBundle, deleteBundle, getWalletBundles, getWalletTokens } from './api'
+import { addressStore } from './stores/store'
 
 export const config = createConfig({
     chains: [sepolia],
@@ -18,7 +17,7 @@ export const config = createConfig({
     },
 })
 
-export const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS as Address 
+export const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS as Address
 
 export const publicClient = createPublicClient({
     chain: sepolia,
@@ -41,7 +40,7 @@ export const approveToken = async (asset: SelectedBundleAsset) => {
         }
     })
 
-    const hash = await tokenContract.write.approve([contractAddress, BigInt(asset.toBeBundled * Math.pow(10, asset.decimals))])
+    const hash = await tokenContract.write.approve([contractAddress, BigInt(asset.toBeBundled) * BigInt(Math.pow(10, asset.decimals))])
     await publicClient.waitForTransactionReceipt({
         hash
     })
@@ -61,7 +60,7 @@ export const saveBundle = async (selectedAssets: SelectedBundleAsset[]): Promise
     })
 
     const data = selectedAssets.map((asset) => {
-        return [asset.assetType, asset.address, BigInt(asset.tokenId), BigInt(asset.toBeBundled * Math.pow(10, asset.decimals))]
+        return [asset.assetType, asset.address, BigInt(asset.tokenId), BigInt(asset.toBeBundled) * BigInt(Math.pow(10, asset.decimals))]
     })
 
     // Retrieve the bundle id
