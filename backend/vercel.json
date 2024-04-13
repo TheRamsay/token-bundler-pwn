@@ -4,12 +4,12 @@
         {
             "src": "token_bundler/token_bundler/wsgi.py",
             "use": "@vercel/python",
-            "config": { "maxLambdaSize": "15mb" }
+            "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
         },
         {
             "src": "build_files.sh",
             "use": "@vercel/static-build",
-            "config": { "distDir": "token_bundler" }
+            "config": { "distDir": "." }
         }
     ],
     "routes": [
